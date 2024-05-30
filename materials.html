@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Other materials</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&family=Open+Sans:wght@300;400&family=Roboto+Slab:wght@300;400&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    /* Add CSS styles here */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      z-index: 99;
+    }
+    .scroll-to-top button {
+      background-color: #6CCFFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 10px 15px;
+      font-size: 16px;
+    }
+  </style>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom right,#53e6e8, #8f94fb);
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+    .header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .header .logo {
+      font-size: 2.5em;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Roboto Slab', serif;
+    }
+   .ribbon {
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      padding: 5px 0;
+    }
+    .ribbon button {
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.2em;
+      margin: 0 15px;
+      cursor: pointer;
+      font-family: 'Roboto Slab', serif;
+    }
+    .ribbon button:hover {
+      color: #ffeb3b;
+
+
+    }
+    .nav-items {
+	
+      display: none;
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 10px;
+      border-radius: 10px;
+      position: absolute;
+      top: 120px; /* Adjust based on the header height */
+      right: 20px;
+    }
+    .nav-items a {
+      color: #fff;
+      margin: 10px 0;
+      text-decoration: none;
+      font-size: 1.2em;
+      font-family: 'Roboto Slab', serif;
+      transition: color 0.3s ease;
+    }
+    .nav-items a:hover {
+      color: #ffeb3b;
+    }
+    .intro {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 50px;
+      margin: 50px;
+      border-radius: 20px;
+      text-align: center;
+      font-family: 'Merriweather', serif;
+      color: #333;
+    }
+    .intro h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      position: relative;
+      font-family: 'Roboto Slab', serif;
+      color: #4e54c8;
+    }
+    .intro h1::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 10px;
+      background: #ffeb3b;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: -1;
+    }
+    .about-us, .contact-us {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 70px; /* Increased padding for larger box */
+      margin: 50px;
+      border-radius: 15px;
+      font-family: 'Merriweather', serif;
+    }
+    .about-us-text, .contact-us-text {
+      flex: 1;
+      margin-right: 30px;
+      color: Grey ; /* Changed text color to black */
+    }
+    .about-us h2, .contact-us h2 {
+      color:#d147f9; /* Change the color to make it more visible */
+    }
+    .about-us img, .contact-us img {
+      border-radius: 15px;
+      max-width: 300px;
+    }
+    .footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      color:white;
+      text-align: center;
+      padding: 20px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+	body {
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end; /* Align menu to the right */
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu-item > a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-item > a:hover {
+    background-color: #555;
+}
+
+.icon {
+    font-size: 24px; /* Adjust icon size */
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #444;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.submenu li a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.submenu li a:hover {
+    background-color: #666;
+}
+
+.menu-item:hover .submenu {
+    display: block;
+}
+
+.product {
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.product img {
+  width: 200px;
+  height: 200px;
+  background-color: #eee;
+}
+
+.product h3 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.product p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="#" class="logo">School materials</a>
+  </header>
+  <nav>
+  <div class="ribbon">
+<a href="file:///D:/Computer%20Science%20(School)/website%20project%20(main12)/home.html.html">
+    <button class="home-btn">Home</button>
+</a>
+
+<a href="file:///D:/Computer%20Science%20(School)/website%20project%20(main12)/books_test18+.html">
+<button type="book">Book</button>
+</a>
+
+  <a href="Uniform.html">
+ <button class= "Uniform">Uniform</button>
+	</a>
+
+
+</button>
+	
+  </div>
+  </nav>
+  <main>
+
+    <div class="container">
+      <div class="product">
+	<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTRdzGO-xw7a7gz4wgJyZdB63fZF5rs8GTGMLXigkPNqSyNJxS0" alt="Product 1" width="200" height="200">
+		<h3>sketch pad(A2)</h3>
+		<p>Rs 100 </p>
+	<button>Add to Cart</button>
+	</div>
+<div class="product">
+		<img src="https://isomarsshop.in/cdn/shop/products/Untitled-1_463cdd56-e57f-4434-aabd-ea03138cd9e9_2048x.jpg?v=1622011561" alt="Product 2" width="200" height="200">
+		<h3>Sketch pad(A3)</h3>
+	<p>Rs 90</p>
+	<button>Add to Cart</button>
+	</div>
+
+	<div class="product">
+		<img src="data:image/jpeg;base64,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" alt="Product 3" width="200" height="200">
+		<h3>Apron</h3>
+		<p>Rs 175</p>
+	<button>Add to Cart</button>
+	</div>
+
+	<div class="product">
+		<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT2i7f39VCruTa9zLgZv-mNkj3Vw98fS5RZ4GKqSDdMD4ah3DBF" alt="Product 4" width="200" height="200">
+		<h3>Notebook</h3>
+	<p>Rs 90</p>
+	<button>Add to Cart</button>
+	</div>
+     
+        <div class="product">
+		<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTrjKE8CsvMSJJ8Z1P7KoND6uk_w7WkFH1BUfEhr6BjLlx266XG" alt="Product 3" width="200" height="200">
+		<h3>Isometric copybook</h3>
+		<p>Rs 90</p>
+	<button>Add to Cart</button>
+	</div>
+
+<div class="product">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy2wRvJ-EQpHQXG9JyId1pj8eqf6m0dM8LGA&s" alt="Product 3" width="200" height="200">
+		<h3> pack of copybook</h3>
+		<p>Rs 250</p>
+	<button>Add to Cart</button>
+	</div>
+
+<div class="product">
+		<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT6qF3y8YeQyfLwSjpSh25KiMebG2nx0wJH7YstoST2UIcaadnt" alt="Product 3" width="200" height="200">
+		<h3> G.M.D</h3>
+		<p>Rs 90</p>
+	<button>Add to Cart</button>
+	</div>
+<div class="product">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAg3F-2U5qT-7GxhkuYuX9BHs25lu24TLC99mYHweTKgdhi3Kl" alt="Product 3" width="200" height="200">
+		<h3> progress book</h3>
+		<p>Rs 90</p>
+	<button>Add to Cart</button>
+	</div>
+
+<div class="product">
+		<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTr7zWqKNVAyTEZhrczwE3PqLCJvKFae9JklKf-l-eM5eJAsd-p" alt="Product 3" width="200" height="200">
+		<h3> Examination sheet</h3>
+		<p>Rs 100</p>
+	<button>Add to Cart</button>
+	</div>
+<div class="product">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgHeRFHHR6stl1zwUr_67qbRrqop8BWrqXE0kYDT3f4od7Ykb7" alt="Product 3" width="200" height="200">
+		<h3> set of art materials</h3>
+		<p>Rs 275</p>
+	<button>Add to Cart</button>
+	</div>
+
+   </main>
+  
+  <footer class="footer">
+    <div class="copy">&copy; 2024 Imperial</div>
+  </footer>
+
+  <!-- Add the scrolling-to-top button here -->
+  <div class="scroll-to-top" id="myBtn">
+    <button onclick="topFunction()" title="Go to top">TOP</button>
+  </div>
+
+  <script>
+    // JavaScript code
+    let mybutton = document.getElementById("myBtn");
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMPERIAL COLLEGE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&family=Open+Sans:wght@300;400&family=Roboto+Slab:wght@300;400&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    /* Add CSS styles here */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      z-index: 99;
+    }
+    .scroll-to-top button {
+      background-color: #6CCFFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 10px 15px;
+      font-size: 16px;
+    }
+  </style>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom right, #53e6e8, #8f94fb);
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+    /* Corrected indentation for readability */
+    .header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+  font-size: 1.8em;
+    }
+
+    /* Corrected indentation and added 'margin-right' for better spacing */
+    .header .logo {
+      font-size: 2.5em;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Roboto Slab', serif;
+      margin-right: 15px;
+    }
+    /* Corrected indentation */
+    .ribbon {
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      padding: 5px 0;
+  font-size: 1em;
+    }
+    /* Corrected indentation and added margin for button spacing */
+    .ribbon button {
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      font-size: 2em;
+      margin: 0 15px;
+      cursor: pointer;
+      font-family: 'Roboto Slab', serif;
+    }
+    /* Corrected indentation */
+    .nav-items {
+      display: none;
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 10px;
+      border-radius: 10px;
+      position: absolute;
+      top: 120px; /* Adjust based on the header height */
+      right: 20px;
+    }
+    /* Corrected indentation */
+    .nav-items a {
+      color: #fff;
+      margin: 10px 0;
+      text-decoration: none;
+      font-size: 1.2em;
+      font-family: 'Roboto Slab', serif;
+      transition: color 0.3s ease;
+    }
+    /* Corrected indentation */
+    .intro {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 50px;
+      margin: 50px;
+      border-radius: 20px;
+      text-align: center;
+      font-family: 'Merriweather', serif;
+      color: #333;
+  font-size: 1.5em;
+    }
+    /* Corrected indentation */
+    .about-us, .contact-us {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 70px; /* Increased padding for larger box */
+      margin: 50px;
+      border-radius: 15px;
+      font-family: 'Merriweather', serif;
+    }
+    /* Corrected indentation */
+    .about-us-text, .contact-us-text {
+      flex: 1;
+      margin-right: 30px;
+      color: black; /* Changed text color to black */
+  font-size:1.5em;
+    }
+    /* Corrected indentation */
+    .about-us h2, .contact-us h2 {
+      color: #d147f9;
+    }
+    /* Corrected indentation */
+    .about-us img {
+      border-radius: 20px;
+      max-width: 200px;
+    }
+    /* Corrected indentation */
+    .about-us figcaption, .contact-us figcaption {
+      color: #000;
+    }
+    /* Corrected indentation */
+    .contact-us img {
+      border-radius: 20px;
+      max-width: 750px;
+max-height: 750px;
+    }
+    /* Corrected indentation */
+    .footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-family: 'Open Sans', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="#" class="logo">Imperial College Store</a>
+  </header>
+
+  <div class="ribbon">
+    <!-- Corrected button tags and added href attributes -->
+    <a href="home.html.html">
+      <button class="home-btn">Home</button>
+    </a>
+    <a href="Uniform.html">
+      <button class="Uniform-btn">Uniform</button>
+    </a>
+    <a href="materials.html">
+      <button type="School materials-btn">School materials</button>
+    </a>
+    <a href="https://rushilsookaul.github.io/Website-2024/books_test18+">
+      <button type="book-btn">Book</button>
+    </a>
+  </div>
+
+  <nav class="nav-items">
+    <a href="#" id="books">Books</a>
+    <a href="#" id="uniforms">Uniforms</a>
+    <a href="#" id="other-materials">Other Materials</a>
+  </nav>
+
+  <main>
+    <div class="intro">
+      <h1>Imperial College Store</h1>
+      <p>Welcome to our website. On this website you can find all the school materials that we sell.</p>
+    </div>
+
+    <div class="about-us" id="about-us">
+      <div class="about-us-text">
+        <h2>About Us</h2>
+        <p>We are one of the most prestigious boys' colleges that has proven its existence and expertise in molding the Mauritian civilization for almost 4 decades. Our vision is to provide the best quality education to our young people with a clear goal of producing the right citizens of tomorrow, fitting in an ever-changing society and contributing towards building the nation.</p>
+      </div>
+      <!-- Corrected indentation -->
+      <figure>
+        <img src="http://www.imperialcollege.mu/img/rector.jpg" alt="Trulli" style="width:100%">
+        <figcaption>VIKASH.R. BOODHOO
+          <p>RECTOR</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="contact-us" id="contact-us">
+      <div class="contact-us-text">
+        <h2>Contact Us</h2>
+        <p>Imperial College<br>
+          16, Boulevard Victoria<br>
+          Forest-Side<br>
+          Mauritius<br><br>
+          (230) 676-1617
+        </p>
+      </div>
+      <img src="https://www.imperialcollege.mu/img/1.jpg" alt="contact">
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="copy">&copy; 2024 Imperial</div>
+  </footer>
+
+  <!-- Add the scrolling-to-top button here -->
+  <div class="scroll-to-top" id="myBtn">
+    <button onclick="topFunction()" title="Go to top">TOP</button>
+  </div>
+
+  <script>
+    // JavaScript code
+    let mybutton = document.getElementById("myBtn");
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uniform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&family=Open+Sans:wght@300;400&family=Roboto+Slab:wght@300;400&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom right,#53e6e8, #8f94fb);
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+    .header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .header .logo {
+      font-size: 2.5em;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Roboto Slab', serif;
+    }
+    .ribbon {
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      padding: 5px 0;
+    }
+    .ribbon button {
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.2em;
+      margin: 0 15px;
+      cursor: pointer;
+      font-family: 'Roboto Slab', serif;
+    }
+    .ribbon button:hover {
+      color: #ffeb3b;
+
+
+    }
+    .nav-items {
+	
+      display: none;
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 10px;
+      border-radius: 10px;
+      position: absolute;
+      top: 120px; /* Adjust based on the header height */
+      right: 20px;
+    }
+    .nav-items a {
+      color: #fff;
+      margin: 10px 0;
+      text-decoration: none;
+      font-size: 1.2em;
+      font-family: 'Roboto Slab', serif;
+      transition: color 0.3s ease;
+    }
+    .nav-items a:hover {
+      color: #ffeb3b;
+    }
+    .intro {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 50px;
+      margin: 50px;
+      border-radius: 20px;
+      text-align: center;
+      font-family: 'Merriweather', serif;
+      color: #333;
+    }
+    .intro h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      position: relative;
+      font-family: 'Roboto Slab', serif;
+      color: #4e54c8;
+    }
+    .intro h1::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 10px;
+      background: #ffeb3b;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: -1;
+    }
+    .about-us, .contact-us {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 70px; /* Increased padding for larger box */
+      margin: 50px;
+      border-radius: 15px;
+      font-family: 'Merriweather', serif;
+    }
+    .about-us-text, .contact-us-text {
+      flex: 1;
+      margin-right: 30px;
+      color: Grey ; /* Changed text color to black */
+    }
+    .about-us h2, .contact-us h2 {
+      color:#d147f9; /* Change the color to make it more visible */
+    }
+    .about-us img, .contact-us img {
+      border-radius: 15px;
+      max-width: 300px;
+    }
+    .footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      color:white;
+      text-align: center;
+      padding: 20px;
+      font-family: 'Open Sans', sans-serif;
+    }
+    
+    }
+   .scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 60px;
+      display: none;
+      z-index: 99;
+    }
+    .scroll-to-top button {
+  background-color: lightblue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 4px;
+  position: fixed; /* Ensure it stays fixed */
+  bottom: 20px;
+  right: 30px;
+  display: block; /* Make it visible initially */
+  z-index: 99;
+}
+	
+	body {
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end; /* Align menu to the right */
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu-item > a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-item > a:hover {
+    background-color: #555;
+}
+
+.icon {
+    font-size: 24px; /* Adjust icon size */
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #444;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.submenu li a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.submenu li a:hover {
+    background-color: #666;
+}
+
+.menu-item:hover .submenu {
+    display: block;
+}
+
+.product {
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.product img {
+  width: 200px;
+  height: 200px;
+  background-color: #eee;
+}
+
+.product h3 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.product p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="#" class="logo">Uniform</a>
+  </header>
+  <nav>
+  <div class="ribbon">
+
+<a href="file:///D:/Computer%20Science%20(School)/website%20project%20(main12)/home.html.html">
+    <button class="home-btn">Home</button>
+</a>
+  <a href="materials.html">
+ <button class= "materials">school materials</button>
+	</a>
+
+<a href="file:///D:/Computer%20Science%20(School)/website%20project%20(main12)/books_test18+.html">
+<button type="book">Book</button>
+</a>
+</button>
+	
+  </div>
+  </nav>
+  <main>
+    <div class="container">
+      <div class="product">
+	<img src="https://cdn.suitdirect.co.uk/upload/siteimages/large/0051378_010_a.jpg" alt="Product 1" width="200" height="200">
+		<h3>Shirt(S)</h3>
+		<p>Rs 200 </p>
+	<button>Add to Cart</button>
+	</div>
+
+	<div class="product">
+		<img src="https://cdn.suitdirect.co.uk/upload/siteimages/large/0051378_010_a.jpg" alt="Product 2" width="200" height="200">
+		<h3>Shirt(M)</h3>
+	<p>Rs 300</p>
+	<button>Add to Cart</button>
+	</div>
+
+	<div class="product">
+		<img src="https://cdn.suitdirect.co.uk/upload/siteimages/large/0051378_010_a.jpg" alt="Product 3" width="200" height="200">
+		<h3>Shirt(L)</h3>
+		<p>Rs 400</p>
+	<button>Add to Cart</button>
+	</div>
+
+	<div class="product">
+		<img src="https://cdn.suitdirect.co.uk/upload/siteimages/large/0051378_010_a.jpg" alt="Product 4" width="200" height="200">
+		<h3>Shirt(XL)</h3>
+	<p>Rs 500</p>
+	<button>Add to Cart</button>
+	</div>
+     
+        <div class="product">
+		<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSTNOVUn15LM1Asrl38rVJDt0pJz1kVzYNwT79zYSvlhJ24z4x6" alt="Product 3" width="200" height="200">
+		<h3>Canvas pant(1M50)</h3>
+		<p>Rs 300</p>
+	<button>Add to Cart</button>
+	</div>
+
+<div class="product">
+		<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSecLoehd1AoC33E1PPFARLGHgBp8e9gYLX8XLr29DlNWI5ni3X" alt="Product 3" width="200" height="200">
+		<h3> Jacket(S)</h3>
+		<p>Rs 500</p>
+	<button>Add to Cart</button>
+	</div>
+
+<div class="product">
+		<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSecLoehd1AoC33E1PPFARLGHgBp8e9gYLX8XLr29DlNWI5ni3X" alt="Product 3" width="200" height="200">
+		<h3> Jacket(M)</h3>
+		<p>Rs 600</p>
+	<button>Add to Cart</button>
+
+	</div>
+
+
+
+<div class="product">
+		<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSecLoehd1AoC33E1PPFARLGHgBp8e9gYLX8XLr29DlNWI5ni3X" alt="Product 3" alt="Product 3" width="200" height="200">
+		<h3> Jacket(L)</h3>
+		<p>Rs 700</p>
+	<button>Add to Cart</button>
+	</div>
+<div class="product">
+		<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSecLoehd1AoC33E1PPFARLGHgBp8e9gYLX8XLr29DlNWI5ni3X" alt="Product 3" width="200" height="200">
+		<h3>Jacket(XL)</h3>
+		<p>Rs 800</p>
+	<button>Add to Cart</button>
+	</div>
+
+<div class="product">
+		<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQmWmh3F34F0V9D2O_KCAz0kmr4f10_SiSIQmrO3D5BRejZ_3Z_" alt="Product 3" width="200" height="200">
+		<h3> socks(6 pairs)</h3>
+		<p>Rs 275</p>
+	<button>Add to Cart</button>
+	</div>
+<div class="product">
+		<img src="https://cdn-images.farfetch-contents.com/19/91/27/72/19912772_44703705_1000.jpg" alt="Product 3" width="200" height="200">
+		<h3> P.E shirt(S)</h3>
+		<p>Rs 200</p>
+	<button>Add to Cart</button>
+	</div>
+<div class="product">
+		<img src="https://cdn-images.farfetch-contents.com/19/91/27/72/19912772_44703705_1000.jpg" alt="Product 3" width="200" height="200">
+		<h3> P.E shirt(M)</h3>
+		<p>Rs  300</p>
+	<button>Add to Cart</button>
+	</div>
+
+<div class="product">
+		<img src="https://cdn-images.farfetch-contents.com/19/91/27/72/19912772_44703705_1000.jpg" alt="Product 3" width="200" height="200">
+		<h3> P.E shirt(L)</h3>
+		<p>Rs 400</p>
+	<button>Add to Cart</button>
+	</div>
+
+<div class="product">
+		<img src="https://cdn-images.farfetch-contents.com/19/91/27/72/19912772_44703705_1000.jpg" alt="Product 3" width="200" height="200">
+		<h3> P.E shirt(XL)</h3>
+		<p>Rs 500</p>
+	<button>Add to Cart</button>
+	</div>
+
+
+
+<div class="product">
+		<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRj_9oB7yDEzT6aeB4osYHUOcx16sWDUtXefTJMtntCJfZSFDNL" alt="Product 3" width="200" height="200">
+		<h3> P.E short(S)</h3>
+		<p>Rs 175</p>
+	<button>Add to Cart</button>
+	</div>
+
+<div class="product">
+		<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRj_9oB7yDEzT6aeB4osYHUOcx16sWDUtXefTJMtntCJfZSFDNL" alt="Product 3" width="200" height="200">
+		<h3> P.E short(M)</h3>
+		<p>Rs 300</p>
+	<button>Add to Cart</button>
+	</div>
+<div class="product">
+		<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRj_9oB7yDEzT6aeB4osYHUOcx16sWDUtXefTJMtntCJfZSFDNL" alt="Product 3" width="200" height="200">
+		<h3> P.E short(L)</h3>
+		<p>Rs 425</p>
+	<button>Add to Cart</button>
+	</div>
+<div class="product">
+		<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRj_9oB7yDEzT6aeB4osYHUOcx16sWDUtXefTJMtntCJfZSFDNL" alt="Product 3" width="200" height="200">
+		<h3> P.E short(XL)</h3>
+		<p>Rs 550</p>
+	<button>Add to Cart</button>
+	</div>
+   </main>
+  
+  <footer class="footer">
+    <div class="copy">&copy; 2024 Imperial</div>
+  </footer>
+   <!-- Add the scrolling-to-top button here -->
+  <div class="scroll-to-top" id="myBtn">
+    <button onclick="topFunction()" title="Go to top">TOP</button>
+  </div>
+
+  <script>
+    // JavaScript code
+    let mybutton = document.getElementById("myBtn");
+
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+</body>
+</html>
