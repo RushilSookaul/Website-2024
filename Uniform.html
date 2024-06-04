@@ -319,16 +319,32 @@ nav {
 <button type="book">Book</button>
 </a>
 </button>
-	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<a href="#" class="cart-icon"><i class="fas fa-shopping-cart" style="color: white;"></i></a>
   </div>
   </nav>
-  <main>
+
+    <div class="card" id="cart">
+        <h1>Card</h1>
+        <ul class="listCard"></ul>
+        <div class="checkOut">
+            <div class="total">0</div>
+            <div class="closeShopping" onclick="toggleCart()">Close</div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Cart Icon -->
+        <div class="cart-icon" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+	
     <div class="container">
       <div class="product">
 	<img src="https://cdn.suitdirect.co.uk/upload/siteimages/large/0051378_010_a.jpg" alt="Product 1" width="200" height="200">
-		<h3>Shirt(S)</h3>
-		<p>Rs 200 </p>
-	<button>Add to Cart</button>
+	 <span class="item-name">Shirt</span>
+         <p><span class="item-price">Rs 200</span></p>
+         <button onclick="addToCart('Shirt', 200)">Add to Cart</button>
 	</div>
 
 	<div class="product">
@@ -459,7 +475,51 @@ nav {
     <button onclick="topFunction()" title="Go to top">TOP</button>
   </div>
 
-  <script>
+<script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            const listCard = document.querySelector('.listCard');
+            const totalDiv = document.querySelector('.total');
+            listCard.innerHTML = '';
+            total = 0;
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `${item.name} - Rs ${item.price.toFixed(2)} <button onclick="removeFromCart(${index})">Remove</button>`;
+                listCard.appendChild(li);
+                total += item.price;
+            });
+            totalDiv.innerText = `Rs ${total.toFixed(2)}`;
+        }
+
+        function toggleCart() {
+            const cart = document.getElementById('cart');
+            cart.style.display = cart.style.display === 'none' || cart.style.display === '' ? 'block' : 'none';
+        }
+
+        document.querySelector('.home-btn').addEventListener('click', () => {
+            window.location.href = '#';
+        });
+
+        document.querySelector('.about-btn').addEventListener('click', () => {
+            document.getElementById('about-us').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.querySelector('.contact-btn').addEventListener('click', () => {
+            document.getElementById('contact-us').scrollIntoView({ behavior: 'smooth' });
+        });
+
     // JavaScript code
     let mybutton = document.getElementById("myBtn");
 
