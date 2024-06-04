@@ -143,6 +143,55 @@
       font-family: 'Open Sans', sans-serif;
     }
 
+        .cart-icon {
+            font-size: 24px;
+            cursor: pointer;
+            position: fixed;
+            top: 115px;
+            right: 20px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            margin-right: 0px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #148F77;
+			margin-left: auto;
+			position: relative;
+			border-color:#566573;
+        }
+        .card h1 {
+            font-size: 24px;
+			f-color: #ffffff;			
+            margin-bottom: 10px;
+        }
+        .listCard {
+            list-style-type: none;
+            padding: 0;
+            margin-right: 20px;
+        }
+        .listCard li {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .checkOut {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .closeShopping {
+            cursor: pointer;
+            color: #000000;
+            text-decoration: underline;
+	  
+
 	body {
     font-family: Arial, sans-serif;
 }
@@ -275,69 +324,69 @@ nav {
     <div class="container">
       <div class="product">
 	<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTRdzGO-xw7a7gz4wgJyZdB63fZF5rs8GTGMLXigkPNqSyNJxS0" alt="Product 1" width="200" height="200">
-		<h3>sketch pad(A2)</h3>
-		<p>Rs 100 </p>
-	<button>Add to Cart</button>
+	<span class="item-name">Sketch Pad(A2)</span>
+                <p><span class="item-price">Rs 100</span></p>
+                <button onclick="addToCart('Sketch Pad(A2) ', 100)">Add to Cart</button>	
 	</div>
-<div class="product">
-		<img src="https://isomarsshop.in/cdn/shop/products/Untitled-1_463cdd56-e57f-4434-aabd-ea03138cd9e9_2048x.jpg?v=1622011561" alt="Product 2" width="200" height="200">
-		<h3>Sketch pad(A3)</h3>
-	<p>Rs 90</p>
-	<button>Add to Cart</button>
+	<div class="product">
+	  <img src="https://isomarsshop.in/cdn/shop/products/Untitled-1_463cdd56-e57f-4434-aabd-ea03138cd9e9_2048x.jpg?v=1622011561" alt="Product 2" width="200" height="200">
+	  <span class="item-name">Sketck Pad(A3)</span>
+                <p><span class="item-price">Rs 90</span></p>
+                <button onclick="addToCart('Sketch Pad(A3)', 90)">Add to Cart</button>	
 	</div>
 
 	<div class="product">
-		<img src="data:image/jpeg;base64,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" alt="Product 3" width="200" height="200">
-		<h3>Apron</h3>
-		<p>Rs 175</p>
-	<button>Add to Cart</button>
+	  <img src="data:image/jpeg;base64,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" alt="Product 3" width="200" height="200">
+	  <span class="item-name">Apron</span>
+                <p><span class="item-price">Rs 175</span></p>
+                <button onclick="addToCart('Apron', 175)">Add to Cart</button>	
 	</div>
 
 	<div class="product">
-		<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT2i7f39VCruTa9zLgZv-mNkj3Vw98fS5RZ4GKqSDdMD4ah3DBF" alt="Product 4" width="200" height="200">
-		<h3>Notebook</h3>
-	<p>Rs 90</p>
-	<button>Add to Cart</button>
+	  <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT2i7f39VCruTa9zLgZv-mNkj3Vw98fS5RZ4GKqSDdMD4ah3DBF" alt="Product 4" width="200" height="200">
+	  <span class="item-name">Notebook</span>
+                <p><span class="item-price">Rs 90</span></p>
+                <button onclick="addToCart('Notebook', 90)">Add to Cart</button>	
 	</div>
      
         <div class="product">
-		<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTrjKE8CsvMSJJ8Z1P7KoND6uk_w7WkFH1BUfEhr6BjLlx266XG" alt="Product 3" width="200" height="200">
-		<h3>Isometric copybook</h3>
-		<p>Rs 90</p>
-	<button>Add to Cart</button>
+	  <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTrjKE8CsvMSJJ8Z1P7KoND6uk_w7WkFH1BUfEhr6BjLlx266XG" alt="Product 3" width="200" height="200">
+	  <span class="item-name">Isometric Copybook</span>
+                <p><span class="item-price">Rs 90</span></p>
+                <button onclick="addToCart('Isometric Copybook', 90)">Add to Cart</button>	
 	</div>
 
-<div class="product">
-		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy2wRvJ-EQpHQXG9JyId1pj8eqf6m0dM8LGA&s" alt="Product 3" width="200" height="200">
-		<h3> pack of copybook</h3>
-		<p>Rs 250</p>
-	<button>Add to Cart</button>
+	<div class="product">
+	  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy2wRvJ-EQpHQXG9JyId1pj8eqf6m0dM8LGA&s" alt="Product 3" width="200" height="200">
+	  <span class="item-name">Pack of Copybook</span>
+                <p><span class="item-price">Rs 250</span></p>
+                <button onclick="addToCart('Pack of Copybook', 250)">Add to Cart</button>	
 	</div>
 
-<div class="product">
-		<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT6qF3y8YeQyfLwSjpSh25KiMebG2nx0wJH7YstoST2UIcaadnt" alt="Product 3" width="200" height="200">
-		<h3> G.M.D</h3>
-		<p>Rs 90</p>
-	<button>Add to Cart</button>
+	<div class="product">
+	  <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT6qF3y8YeQyfLwSjpSh25KiMebG2nx0wJH7YstoST2UIcaadnt" alt="Product 3" width="200" height="200">
+	  <span class="item-name">G.M.D</span>
+                <p><span class="item-price">Rs 90</span></p>
+                <button onclick="addToCart('GMD', 90)">Add to Cart</button>	
 	</div>
-<div class="product">
-		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAg3F-2U5qT-7GxhkuYuX9BHs25lu24TLC99mYHweTKgdhi3Kl" alt="Product 3" width="200" height="200">
-		<h3> progress book</h3>
-		<p>Rs 90</p>
-	<button>Add to Cart</button>
+	<div class="product">
+	  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAg3F-2U5qT-7GxhkuYuX9BHs25lu24TLC99mYHweTKgdhi3Kl" alt="Product 3" width="200" height="200">
+	  <span class="item-name">Progress Book</span>
+                <p><span class="item-price">Rs 90</span></p>
+                <button onclick="addToCart('Progress Book', 90)">Add to Cart</button>	
 	</div>
 
-<div class="product">
-		<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTr7zWqKNVAyTEZhrczwE3PqLCJvKFae9JklKf-l-eM5eJAsd-p" alt="Product 3" width="200" height="200">
-		<h3> Examination sheet</h3>
-		<p>Rs 100</p>
-	<button>Add to Cart</button>
+	<div class="product">
+	  <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTr7zWqKNVAyTEZhrczwE3PqLCJvKFae9JklKf-l-eM5eJAsd-p" alt="Product 3" width="200" height="200">
+	  <span class="item-name">Examination Sheet</span>
+                <p><span class="item-price">Rs 100</span></p>
+                <button onclick="addToCart('Examination Sheet', 100)">Add to Cart</button>	
 	</div>
-<div class="product">
-		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgHeRFHHR6stl1zwUr_67qbRrqop8BWrqXE0kYDT3f4od7Ykb7" alt="Product 3" width="200" height="200">
-		<h3> set of art materials</h3>
-		<p>Rs 275</p>
-	<button>Add to Cart</button>
+	<div class="product">
+	  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgHeRFHHR6stl1zwUr_67qbRrqop8BWrqXE0kYDT3f4od7Ykb7" alt="Product 3" width="200" height="200">
+	  <span class="item-name">Set of Art Materials</span>
+                <p><span class="item-price">Rs 275</span></p>
+                <button onclick="addToCart('Set of Art Materials', 275)">Add to Cart</button>
 	</div>
 
    </main>
@@ -352,6 +401,52 @@ nav {
   </div>
 
   <script>
+
+        let cart = [];
+        let total = 0;
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            const listCard = document.querySelector('.listCard');
+            const totalDiv = document.querySelector('.total');
+            listCard.innerHTML = '';
+            total = 0;
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `${item.name} - Rs ${item.price.toFixed(2)} <button onclick="removeFromCart(${index})">Remove</button>`;
+                listCard.appendChild(li);
+                total += item.price;
+            });
+            totalDiv.innerText = `Rs ${total.toFixed(2)}`;
+        }
+
+        function toggleCart() {
+            const cart = document.getElementById('cart');
+            cart.style.display = cart.style.display === 'none' || cart.style.display === '' ? 'block' : 'none';
+        }
+
+        document.querySelector('.home-btn').addEventListener('click', () => {
+            window.location.href = '#';
+        });
+
+        document.querySelector('.about-btn').addEventListener('click', () => {
+            document.getElementById('about-us').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.querySelector('.contact-btn').addEventListener('click', () => {
+            document.getElementById('contact-us').scrollIntoView({ behavior: 'smooth' });
+        });
+
+	  
     // JavaScript code
     let mybutton = document.getElementById("myBtn");
 
