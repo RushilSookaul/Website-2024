@@ -313,13 +313,28 @@ nav {
   <a href="Uniform.html">
  <button class= "Uniform">Uniform</button>
 	</a>
-
-
 </button>
-	
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<a href="#" class="cart-icon"><i class="fas fa-shopping-cart" style="color: white;"></i></a>
+	  
   </div>
   </nav>
-  <main>
+     <div class="card" id="cart">
+        <h1>Card</h1>
+        <ul class="listCard"></ul>
+        <div class="checkOut">
+            <div class="total">0</div>
+            <div class="closeShopping" onclick="toggleCart()">Close</div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Cart Icon -->
+        <div class="cart-icon" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+
 
     <div class="container">
       <div class="product">
