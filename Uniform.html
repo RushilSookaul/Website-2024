@@ -480,67 +480,79 @@ nav {
   </div>
 
 <script>
-        let cart = [];
-        let total = 0;
+    // Initialize the cart from localStorage or as an empty array if not present
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let total = 0;
 
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            updateCart();
-        }
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        updateCart();
+        saveCart();
+    }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+        saveCart();
+    }
 
-        function updateCart() {
-            const listCard = document.querySelector('.listCard');
-            const totalDiv = document.querySelector('.total');
-            listCard.innerHTML = '';
-            total = 0;
-            cart.forEach((item, index) => {
-                const li = document.createElement('li');
-                li.innerHTML = `${item.name} - Rs ${item.price.toFixed(2)} <button onclick="removeFromCart(${index})">Remove</button>`;
-                listCard.appendChild(li);
-                total += item.price;
-            });
-            totalDiv.innerText = `Rs ${total.toFixed(2)}`;
-        }
-
-        function toggleCart() {
-            const cart = document.getElementById('cart');
-            cart.style.display = cart.style.display === 'none' || cart.style.display === '' ? 'block' : 'none';
-        }
-
-        document.querySelector('.home-btn').addEventListener('click', () => {
-            window.location.href = '#';
+    function updateCart() {
+        const listCard = document.querySelector('.listCard');
+        const totalDiv = document.querySelector('.total');
+        listCard.innerHTML = '';
+        total = 0;
+        cart.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `${item.name} - Rs ${item.price.toFixed(2)} <button onclick="removeFromCart(${index})">Remove</button>`;
+            listCard.appendChild(li);
+            total += item.price;
         });
+        totalDiv.innerText = `Rs ${total.toFixed(2)}`;
+    }
 
-        document.querySelector('.about-btn').addEventListener('click', () => {
-            document.getElementById('about-us').scrollIntoView({ behavior: 'smooth' });
-        });
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
 
-        document.querySelector('.contact-btn').addEventListener('click', () => {
-            document.getElementById('contact-us').scrollIntoView({ behavior: 'smooth' });
-        });
+    function toggleCart() {
+        const cart = document.getElementById('cart');
+        cart.style.display = cart.style.display === 'none' || cart.style.display === '' ? 'block' : 'none';
+    }
 
-    // JavaScript code
+    // Update cart display on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        updateCart();
+    });
+
+    document.querySelector('.home-btn').addEventListener('click', () => {
+        window.location.href = '#';
+    });
+
+    document.querySelector('.about-btn').addEventListener('click', () => {
+        document.getElementById('about-us').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.querySelector('.contact-btn').addEventListener('click', () => {
+        document.getElementById('contact-us').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Scroll to top button functionality
     let mybutton = document.getElementById("myBtn");
 
     window.onscroll = function() {scrollFunction()};
 
     function scrollFunction() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        mybutton.style.display = "block";
-      } else {
-        mybutton.style.display = "none";
-      }
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
     }
 
     function topFunction() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
-  </script>
+</script>
 </body>
 </html>
