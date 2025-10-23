@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Simple Online Chat (Firebase)</title>
+<style>
+  :root {
+    --bg: #0f1113;
+    --card: #151718;
+    --panel: #1e2123;
+    --muted: #9aa0a6;
+    --accent: #2f8fff;
+  }
+  html,body { height:100%; margin:0; background:var(--bg); color:#fff; font-family:Inter,Arial,sans-serif; }
+  .wrap { min-height:100%; display:flex; align-items:center; justify-content:center; padding:20px; box-sizing:border-box; }
+  .chat {
+    width:100%; max-width:420px; background:var(--card); border-radius:12px; box-shadow:0 6px 30px rgba(0,0,0,.6);
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+  .header { padding:12px 16px; background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0)); display:flex; align-items:center; gap:8px; }
+  .title { font-weight:700; }
+  .messages { flex:1; padding:12px; overflow:auto; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); }
+  .msg { margin:8px 0; padding:8px 10px; border-radius:8px; background:var(--panel); }
+  .meta { font-size:12px; color:var(--muted); margin-bottom:6px; display:flex; justify-content:space-between; gap:8px; }
+  .text { white-space:pre-wrap; word-break:break-word; }
+  .composer { display:flex; gap:8px; padding:12px; background:var(--card); border-top:1px solid rgba(255,255,255,0.02); }
+  input, button { font-size:14px; }
+  input[type="text"] { flex:1; padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.03); background:#0b0c0d; color:#fff; outline:none; }
+  button { padding:10px 12px; border-radius:8px; border:none; background:var(--accent); color:#fff; cursor:pointer; }
+  button:active { transform:translateY(1px); }
+  .small { font-size:12px; color:var(--muted); padding:8px 12px; }
+  .name-input { padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.03); background:#0b0c0d; color:#fff; width:160px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="chat" role="application" aria-label="Chat">
+      <div class="header">
+        <div class="title">Simple Chat</div>
+        <div style="flex:1"></div>
+        <input id="nameInput" class="name-input" placeholder="Your name" maxlength="30" />
+      </div>
+
+      <div id="messages" class="messages" aria-live="polite"></div>
+
+      <div class="composer">
+        <input id="textInput" type="text" placeholder="Type a message and press Enter" autocomplete="off" />
+        <button id="sendBtn">Send</button>
+      </div>
+
+      <div class="small">Messages are stored in Firebase Realtime Database. Keep this file's config identical on all devices.</div>
+    </div>
+  </div>
+
+  <!-- Using modular Firebase SDK (v9+) via ES modules -->
+  <script type="module">
+    // ---------- 1) REPLACE THE CONFIG BELOW WITH YOUR FIREBASE WEB APP CONFIG ----------
+    // Get this from Firebase console (Project > Add web app > config)
+    const firebaseConfig = {
+		apiKey: "AIzaSyDijfy9yj5qns16OX115-HFq0fdeFNTS7M",
+		authDomain: "mychatapp-5b8a4.firebaseapp.com",
+		projectId: "mychatapp-5b8a4",
+		storageBucket: "mychatapp-5b8a4.firebasestorage.app",
+		messagingSenderId: "1044633365591",
+		appId: "1:1044633365591:web:43f5391082c4cfcbd8c712",
+		measurementId: "G-GR1H22785D"
+	};
+    // -------------------------------------------------------------------------------
+
+    // sanity check: make sure user replaced config
+    const missing = Object.values(firebaseConfig).some(v => v == null || v === "" || v.includes("FIREBASE_"));
+    if (missing) {
+      document.getElementById('messages').innerHTML =
+        '<div class="msg"><div class="meta">ERROR</div><div class="text">Please paste your Firebase config in the code (replace the placeholders). See the instructions in the chat.</div></div>';
+      throw new Error("Replace Firebase config placeholders with your project's config.");
+    }
+
+    // import the modular functions
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import {
+      getDatabase,
+      ref,
+      push,
+      onChildAdded,
+      query,
+      orderByChild,
+      limitToLast
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    // Use a single node for messages:
+    const CHAT_NODE = "simpleChatMessages";
+
+    // UI elements
+    const messagesEl = document.getElementById('messages');
+    const textInput = document.getElementById('textInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const nameInput = document.getElementById('nameInput');
+
+    // helper: escape text to prevent accidental HTML injection (keeps it simple)
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    // render a message element
+    function renderMessage({ name, text, ts }) {
+      const el = document.createElement('div');
+      el.className = 'msg';
+      const time = new Date(ts).toLocaleString();
+      el.innerHTML =
+        `<div class="meta"><span>${escapeHtml(name || 'Anonymous')}</span><span>${escapeHtml(time)}</span></div>
+         <div class="text">${escapeHtml(text)}</div>`;
+      messagesEl.appendChild(el);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    // load recent messages and keep listening for new ones
+    // we subscribe to the last 500 messages to avoid loading an enormous history at once
+    const recentQuery = query(ref(db, CHAT_NODE), orderByChild('ts'), limitToLast(500));
+    onChildAdded(recentQuery, snapshot => {
+      const data = snapshot.val();
+      if (!data) return;
+      renderMessage(data);
+    });
+
+    // send message helper
+    function sendMessage() {
+      const rawText = textInput.value.trim();
+      const name = nameInput.value.trim() || 'Anonymous';
+      if (!rawText) return;
+      const msg = {
+        name,
+        text: rawText,
+        ts: Date.now()
+      };
+      // push to realtime db
+      push(ref(db, CHAT_NODE), msg)
+        .then(() => {
+          textInput.value = '';
+          textInput.focus();
+        })
+        .catch(err => {
+          console.error("Failed to send:", err);
+          alert("Send failed — check console for details.");
+        });
+    }
+
+    // UI events
+    sendBtn.addEventListener('click', sendMessage);
+    textInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+    // optional: focus name input first time
+    nameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') { textInput.focus(); } });
+
+    // autofocus
+    textInput.focus();
+  </script>
+</body>
+</html>
